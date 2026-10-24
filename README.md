@@ -81,7 +81,7 @@ sudo apt update && sudo apt install -y python3-pip python3-venv
 
 ### 2. Clone Repository & Setup Virtual Environment
 ```bash
-git clone https://github.com/your-username/enterprise-network-lab.git
+git clone https://github.com/phipham1807/enterprise-network-lab
 cd enterprise-network-lab
 python3 -m venv .venv
 source .venv/bin/activate
