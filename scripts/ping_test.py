@@ -14,7 +14,7 @@ Chức năng:
 6. Khôi phục liên kết và đo thời gian failback.
 7. Kiểm tra eBGP R1-AS65001 với R5-AS65005.
 8. Kiểm tra route BGP được phân phối vào OSPF.
-9. Lưu kết quả vào CSV.
+9. Lưu kết quả vào CSV (Giới hạn tối đa 8 lần chạy gần nhất, tự động reset khi sang lần thứ 9).
 """
 
 import csv
@@ -168,7 +168,6 @@ def interface_is_up():
     if result.returncode != 0:
         return False
 
-    # Ví dụ: eth2 UP ...
     fields = result.stdout.split()
 
     return len(fields) >= 2 and fields[1] == "UP"
@@ -222,7 +221,6 @@ def ping_test(source, destination):
         if sent > 0 else 100.0
     )
 
-    # Hỗ trợ output Linux ping và Alpine ping
     rtt_match = re.search(
         r"(?:rtt|round-trip)\s+"
         r"(?:min/avg/max(?:/[\w]+)?)\s*=\s*"
@@ -322,32 +320,36 @@ def check_ospf_redistribution():
 
 
 # ============================================================
-# 7. LƯU KẾT QUẢ CSV
+# 7. LƯU KẾT QUẢ CSV (GIỚI HẠN TỐI ĐA 8 LẦN CHẠY)
 # ============================================================
 
 def save_result(record):
-    """Lưu kết quả và giữ nguyên các lần chạy trước."""
+    """Lưu kết quả, chỉ giữ lại tối đa 8 lần chạy gần nhất (Reset khi sang lần thứ 9)."""
     DATA_DIR.mkdir(parents=True, exist_ok=True)
+    
+    rows = []
+    fieldnames = list(record.keys())
 
-    file_exists = (
-        CSV_FILE.exists()
-        and CSV_FILE.stat().st_size > 0
-    )
+    # Đọc dữ liệu cũ nếu file đã tồn tại
+    if CSV_FILE.exists() and CSV_FILE.stat().st_size > 0:
+        with CSV_FILE.open("r", encoding="utf-8-sig") as file:
+            reader = csv.DictReader(file)
+            if reader.fieldnames:
+                fieldnames = reader.fieldnames
+            rows = list(reader)
 
-    with CSV_FILE.open(
-        "a",
-        newline="",
-        encoding="utf-8-sig",
-    ) as file:
-        writer = csv.DictWriter(
-            file,
-            fieldnames=list(record.keys()),
-        )
+    # Thêm kết quả mới vào danh sách
+    rows.append(record)
 
-        if not file_exists:
-            writer.writeheader()
+    # Nếu số lượng vượt quá 8, chỉ giữ lại 8 lần chạy mới nhất
+    if len(rows) > 8:
+        rows = rows[-8:]
 
-        writer.writerow(record)
+    # Ghi đè lại file CSV với tối đa 8 bản ghi
+    with CSV_FILE.open("w", newline="", encoding="utf-8-sig") as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 # ============================================================
@@ -523,13 +525,15 @@ def main():
             print(f"LỖI FAILOVER: {exc}")
 
         finally:
-            # Luôn thử khôi phục link sau khi đã bắt đầu sự cố
             if failure_triggered:
                 print("\n[F] KHÔI PHỤC LIÊN KẾT R1-R3")
 
                 try:
                     restore_start = time.monotonic()
                     set_interface(True)
+                    
+                    # Cho OSPF một khoảng thời gian ngắn để bắt tay lại hàng xóm (Hello/Dead timer)
+                    time.sleep(3)
 
                     restored_at, restored_route = wait_for_route(
                         "R1",
@@ -569,7 +573,6 @@ def main():
                     errors.append(f"Restore: {exc}")
                     print(f"LỖI RESTORE: {exc}")
 
-                    # Thử bật lại link nếu quá trình phục hồi gặp lỗi
                     try:
                         set_interface(True)
                     except Exception as retry_exc:
@@ -578,7 +581,7 @@ def main():
                         )
 
     # --------------------------------------------------------
-    # G. LƯU KẾT QUẢ
+    # G. LƯU KẾT QUẢ VÀO CSV
     # --------------------------------------------------------
 
     record = {
@@ -640,7 +643,7 @@ def main():
 
     try:
         save_result(record)
-        print(f"\nĐã lưu CSV: {CSV_FILE}")
+        print(f"\n[+] Đã lưu và cập nhật CSV (tối đa 8 lần chạy): {CSV_FILE}")
     except Exception as exc:
         print(f"\nLỖI LƯU CSV: {exc}")
 

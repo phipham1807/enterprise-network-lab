@@ -4,10 +4,21 @@ hostname r1
 domainname localdomain
 service integrated-vtysh-config
 !
+ip prefix-list BGP-TO-OSPF seq 10 permit 203.0.113.0/24
+ip prefix-list LAN-TO-R5 seq 10 permit 10.10.20.0/24
+ip prefix-list LAN-TO-R5 seq 20 permit 10.10.30.0/24
 ip prefix-list BLOCK_PCA seq 5 deny 10.10.20.0/24
 ip prefix-list BLOCK_PCA seq 10 permit any
 !
-route-map PERMIT_ALL permit 10
+route-map BGP-TO-OSPF permit 10
+ match ip address prefix-list BGP-TO-OSPF
+exit
+!
+route-map LAN-TO-R5 permit 10
+ match ip address prefix-list LAN-TO-R5
+exit
+!
+route-map ALLOW-R5 permit 10
 exit
 !
 route-map RM_BGP_OUT permit 10
@@ -16,20 +27,16 @@ exit
 !
 interface eth1
  ip address 172.16.12.1/30
- ip ospf network point-to-point
  no ip ospf passive
 exit
 !
 interface eth2
  ip address 172.16.13.1/30
- ip ospf network point-to-point
  no ip ospf passive
 exit
 !
 interface eth3
  ip address 172.16.15.1/30
- ip ospf network point-to-point
- no ip ospf passive
 exit
 !
 interface eth4
@@ -41,23 +48,24 @@ interface lo
 exit
 !
 router bgp 65001
+ bgp router-id 10.255.0.1
  neighbor 172.16.15.2 remote-as 65005
  !
  address-family ipv4 unicast
-  redistribute ospf
-  neighbor 172.16.15.2 route-map PERMIT_ALL in
+  network 10.10.20.0/24
+  network 10.10.30.0/24
+  neighbor 172.16.15.2 route-map ALLOW-R5 in
   neighbor 172.16.15.2 route-map RM_BGP_OUT out
  exit-address-family
 exit
 !
 router ospf
  ospf router-id 10.255.0.1
- redistribute bgp
+ redistribute bgp route-map BGP-TO-OSPF
  passive-interface default
  network 10.10.10.0/24 area 0.0.0.0
  network 10.255.0.1/32 area 0.0.0.0
  network 172.16.12.0/30 area 0.0.0.0
  network 172.16.13.0/30 area 0.0.0.0
- network 172.16.15.0/30 area 0.0.0.0
 exit
 !

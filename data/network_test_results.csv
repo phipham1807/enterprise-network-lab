@@ -1,14 +1,9 @@
 ﻿started_at,finished_at,route_prefix,direct_next_hop,backup_next_hop,initial_ping_status,initial_ping_loss_percent,initial_avg_rtt_ms,failover_success,failover_detection_seconds,failover_ping_status,failover_ping_loss_percent,failback_success,failback_detection_seconds,failback_ping_status,failback_ping_loss_percent,bgp_established,bgp_external_route_received,r2_external_route_installed,r3_external_route_installed,r4_external_route_installed,restoration_ok,errors
-2026-10-24T04:07:15+00:00,2026-10-24T04:07:15+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,NOT_RUN,,,False,,NOT_RUN,,False,,NOT_RUN,,False,False,False,False,False,False,Baseline: R1 eth2 khong UP. Khong bat dau failover test.
-2026-10-24T04:23:12+00:00,2026-10-24T04:24:23+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.18,True,0.1,PASS,0.0,False,,PASS,0.0,False,False,False,False,False,False,
-2026-10-24T04:35:09+00:00,2026-10-24T04:36:21+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.315,True,0.116,PASS,0.0,False,,PASS,0.0,False,False,False,False,False,False,
-2026-10-24T04:39:27+00:00,2026-10-24T04:40:04+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.23,True,0.156,PASS,0.0,True,10.309,PASS,0.0,True,False,False,False,False,True,
-2026-10-24T04:41:13+00:00,2026-10-24T04:41:45+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.144,True,0.118,PASS,0.0,True,5.289,PASS,0.0,True,True,True,True,True,True,
-2026-10-24T05:01:00+00:00,2026-10-24T05:01:37+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.471,True,0.146,PASS,0.0,True,10.361,PASS,0.0,True,True,True,True,True,True,
-2026-10-24T05:15:43+00:00,2026-10-24T05:16:15+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.463,True,0.114,PASS,0.0,True,10.354,PASS,0.0,True,True,True,True,True,True,
-2026-10-24T06:47:23+00:00,2026-10-24T06:47:55+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.147,True,0.114,PASS,0.0,True,10.121,PASS,0.0,True,True,True,True,True,True,
-2026-10-24T07:11:53+00:00,2026-10-24T07:11:53+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,CHƯA CHẠY,,,False,,CHƯA CHẠY,,False,,CHƯA CHẠY,,False,False,False,False,False,False,Baseline: R1 eth2 không UP. Không bắt đầu failover test.
-2026-10-24T07:12:09+00:00,2026-10-24T07:12:09+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,CHƯA CHẠY,,,False,,CHƯA CHẠY,,False,,CHƯA CHẠY,,False,False,False,False,False,False,Baseline: R1 eth2 không UP. Không bắt đầu failover test.
-2026-10-24T07:13:26+00:00,2026-10-24T07:13:54+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.274,True,0.162,PASS,0.0,True,5.276,PASS,0.0,True,True,True,True,True,True,
-2026-10-24T07:43:28+00:00,2026-10-24T07:43:55+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.14,True,0.125,PASS,0.0,True,5.114,PASS,0.0,True,True,True,True,True,True,
-2026-10-24T07:52:55+00:00,2026-10-24T07:53:27+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.172,True,0.122,PASS,0.0,True,10.355,PASS,0.0,True,True,True,True,True,True,
+2026-10-24T13:57:32+00:00,2026-10-24T13:58:39+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.209,True,0.114,PASS,0.0,True,45.354,PASS,0.0,True,True,True,True,True,True,
+2026-10-24T13:58:42+00:00,2026-10-24T13:59:49+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.185,True,0.147,PASS,0.0,True,45.293,PASS,0.0,True,True,True,True,True,True,
+2026-10-24T13:59:52+00:00,2026-10-24T14:00:59+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.147,True,0.103,PASS,0.0,True,45.151,PASS,0.0,True,True,True,True,True,True,
+2026-10-24T14:01:01+00:00,2026-10-24T14:02:09+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.117,True,0.119,PASS,0.0,True,45.219,PASS,0.0,True,True,True,True,True,True,
+2026-10-24T14:02:11+00:00,2026-10-24T14:03:19+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.123,True,0.124,PASS,0.0,True,45.346,PASS,0.0,True,True,True,True,True,True,
+2026-10-24T14:03:21+00:00,2026-10-24T14:04:29+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.098,True,0.13,PASS,0.0,True,45.286,PASS,0.0,True,True,True,True,True,True,
+2026-10-24T14:04:31+00:00,2026-10-24T14:05:39+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.152,True,0.122,PASS,0.0,True,45.163,PASS,0.0,True,True,True,True,True,True,
+2026-10-24T14:05:41+00:00,2026-10-24T14:06:49+00:00,10.10.30.0/24,172.16.13.2,172.16.12.2,PASS,0.0,0.123,True,0.113,PASS,0.0,True,45.357,PASS,0.0,True,True,True,True,True,True,
