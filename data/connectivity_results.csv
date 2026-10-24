@@ -1,0 +1,7 @@
+timestamp,test,source,destination,status,packet_loss_percent,rtt_min_ms,rtt_avg_ms,rtt_max_ms
+2026-10-23T16:40:32+00:00,PC-A -> PC-B,pc-a,10.10.30.10,PASS,0.0,0.097,0.329,0.979
+2026-10-23T16:40:36+00:00,PC-A -> Server,pc-a,10.10.10.10,PASS,0.0,0.085,0.471,1.577
+2026-10-23T16:40:39+00:00,PC-A -> External test network,pc-a,203.0.113.1,PASS,0.0,0.078,0.131,0.165
+2026-10-23T16:40:42+00:00,PC-B -> PC-A,pc-b,10.10.20.10,PASS,0.0,0.091,0.793,2.766
+2026-10-23T16:40:45+00:00,PC-B -> Server,pc-b,10.10.10.10,PASS,0.0,0.081,0.202,0.397
+2026-10-23T16:40:48+00:00,PC-B -> External test network,pc-b,203.0.113.1,PASS,0.0,0.101,0.131,0.152

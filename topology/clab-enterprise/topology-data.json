@@ -1,0 +1,432 @@
+{
+  "name": "enterprise",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-f0109e7696f5",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true,
+        "ipam": {
+          "provider": "containerlab"
+        }
+      }
+    }
+  },
+  "ssh-pub-keys": [],
+  "nodes": {
+    "pc-a": {
+      "index": "0",
+      "shortname": "pc-a",
+      "longname": "clab-enterprise-pc-a",
+      "fqdn": "pc-a.enterprise.io",
+      "group": "",
+      "labdir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/pc-a",
+      "kind": "linux",
+      "image": "alpine:3.22",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::b",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0109e7696f5",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/pc-a",
+        "clab-node-longname": "clab-enterprise-pc-a",
+        "clab-node-name": "pc-a",
+        "clab-node-type": "",
+        "clab-owner": "phi_pham",
+        "clab-topo-file": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/enterprise.clab.yml",
+        "containerlab": "enterprise"
+      },
+      "port-bindings": [
+      ]
+    },
+    "pc-b": {
+      "index": "1",
+      "shortname": "pc-b",
+      "longname": "clab-enterprise-pc-b",
+      "fqdn": "pc-b.enterprise.io",
+      "group": "",
+      "labdir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/pc-b",
+      "kind": "linux",
+      "image": "alpine:3.22",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::c",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0109e7696f5",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/pc-b",
+        "clab-node-longname": "clab-enterprise-pc-b",
+        "clab-node-name": "pc-b",
+        "clab-node-type": "",
+        "clab-owner": "phi_pham",
+        "clab-topo-file": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/enterprise.clab.yml",
+        "containerlab": "enterprise"
+      },
+      "port-bindings": [
+      ]
+    },
+    "r1": {
+      "index": "2",
+      "shortname": "r1",
+      "longname": "clab-enterprise-r1",
+      "fqdn": "r1.enterprise.io",
+      "group": "",
+      "labdir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r1",
+      "kind": "frr",
+      "image": "quay.io/frrouting/frr:containerlab-10.7.1",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.5",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::5",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0109e7696f5",
+        "clab-node-group": "",
+        "clab-node-kind": "frr",
+        "clab-node-lab-dir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r1",
+        "clab-node-longname": "clab-enterprise-r1",
+        "clab-node-name": "r1",
+        "clab-node-type": "",
+        "clab-owner": "phi_pham",
+        "clab-topo-file": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/enterprise.clab.yml",
+        "containerlab": "enterprise"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "r2": {
+      "index": "3",
+      "shortname": "r2",
+      "longname": "clab-enterprise-r2",
+      "fqdn": "r2.enterprise.io",
+      "group": "",
+      "labdir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r2",
+      "kind": "frr",
+      "image": "quay.io/frrouting/frr:containerlab-10.7.1",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.6",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::6",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0109e7696f5",
+        "clab-node-group": "",
+        "clab-node-kind": "frr",
+        "clab-node-lab-dir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r2",
+        "clab-node-longname": "clab-enterprise-r2",
+        "clab-node-name": "r2",
+        "clab-node-type": "",
+        "clab-owner": "phi_pham",
+        "clab-topo-file": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/enterprise.clab.yml",
+        "containerlab": "enterprise"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "r3": {
+      "index": "4",
+      "shortname": "r3",
+      "longname": "clab-enterprise-r3",
+      "fqdn": "r3.enterprise.io",
+      "group": "",
+      "labdir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r3",
+      "kind": "frr",
+      "image": "quay.io/frrouting/frr:containerlab-10.7.1",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.7",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::7",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0109e7696f5",
+        "clab-node-group": "",
+        "clab-node-kind": "frr",
+        "clab-node-lab-dir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r3",
+        "clab-node-longname": "clab-enterprise-r3",
+        "clab-node-name": "r3",
+        "clab-node-type": "",
+        "clab-owner": "phi_pham",
+        "clab-topo-file": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/enterprise.clab.yml",
+        "containerlab": "enterprise"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "r4": {
+      "index": "5",
+      "shortname": "r4",
+      "longname": "clab-enterprise-r4",
+      "fqdn": "r4.enterprise.io",
+      "group": "",
+      "labdir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r4",
+      "kind": "frr",
+      "image": "quay.io/frrouting/frr:containerlab-10.7.1",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.8",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::8",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0109e7696f5",
+        "clab-node-group": "",
+        "clab-node-kind": "frr",
+        "clab-node-lab-dir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r4",
+        "clab-node-longname": "clab-enterprise-r4",
+        "clab-node-name": "r4",
+        "clab-node-type": "",
+        "clab-owner": "phi_pham",
+        "clab-topo-file": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/enterprise.clab.yml",
+        "containerlab": "enterprise"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "r5": {
+      "index": "6",
+      "shortname": "r5",
+      "longname": "clab-enterprise-r5",
+      "fqdn": "r5.enterprise.io",
+      "group": "",
+      "labdir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r5",
+      "kind": "frr",
+      "image": "quay.io/frrouting/frr:containerlab-10.7.1",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.9",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::9",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0109e7696f5",
+        "clab-node-group": "",
+        "clab-node-kind": "frr",
+        "clab-node-lab-dir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/r5",
+        "clab-node-longname": "clab-enterprise-r5",
+        "clab-node-name": "r5",
+        "clab-node-type": "",
+        "clab-owner": "phi_pham",
+        "clab-topo-file": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/enterprise.clab.yml",
+        "containerlab": "enterprise"
+      },
+      "port-bindings": [
+        {
+          "host-ip": "",
+          "host-port": 0,
+          "port": 22,
+          "protocol": "tcp"
+        }
+      ]
+    },
+    "server": {
+      "index": "7",
+      "shortname": "server",
+      "longname": "clab-enterprise-server",
+      "fqdn": "server.enterprise.io",
+      "group": "",
+      "labdir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/server",
+      "kind": "linux",
+      "image": "alpine:3.22",
+      "mgmt-net": "clab",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.10",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::a",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-mgmt-net-bridge": "br-f0109e7696f5",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/clab-enterprise/server",
+        "clab-node-longname": "clab-enterprise-server",
+        "clab-node-name": "server",
+        "clab-node-type": "",
+        "clab-owner": "phi_pham",
+        "clab-topo-file": "/mnt/d/Tai_lieu_DH/My_project/enterprise-network-lab/topology/enterprise.clab.yml",
+        "containerlab": "enterprise"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "r1",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:0a:60:1c",
+          "peer": "z"
+        },
+        "z": {
+          "node": "r2",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:03:65:bf",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r1",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:58:f3:45",
+          "peer": "z"
+        },
+        "z": {
+          "node": "r3",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:de:81:bf",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r2",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:0f:9e:5b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "r4",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:53:7a:5d",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r4",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:f3:20:8f",
+          "peer": "z"
+        },
+        "z": {
+          "node": "r3",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:d4:0c:11",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r1",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:66:58:b9",
+          "peer": "z"
+        },
+        "z": {
+          "node": "r5",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:3c:71:0d",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r1",
+          "interface": "eth4",
+          "mac": "aa:c1:ab:2e:48:cf",
+          "peer": "z"
+        },
+        "z": {
+          "node": "server",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:69:bd:4d",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r2",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:70:5c:e0",
+          "peer": "z"
+        },
+        "z": {
+          "node": "pc-a",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:17:b1:ec",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "r3",
+          "interface": "eth3",
+          "mac": "aa:c1:ab:d0:a9:10",
+          "peer": "z"
+        },
+        "z": {
+          "node": "pc-b",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:cb:dc:61",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+
+name: enterprise
+
+topology:
+  nodes:
+    r1:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1
+      startup-config: ../configs/r1/frr.conf
+      daemons:
+        - ospfd
+        - bgpd
+
+    r2:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1
+      startup-config: ../configs/r2/frr.conf
+      daemons:
+        - ospfd
+        - bgpd
+
+    r3:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1
+      startup-config: ../configs/r3/frr.conf
+      daemons:
+        - ospfd
+        - bgpd
+
+    r4:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1
+      startup-config: ../configs/r4/frr.conf
+      daemons:
+        - ospfd
+        - bgpd
+
+    r5:
+      kind: frr
+      image: quay.io/frrouting/frr:containerlab-10.7.1
+      startup-config: ../configs/r5/frr.conf
+      daemons:
+        - ospfd
+        - bgpd
+
+    server:
+      kind: linux
+      image: alpine:3.22
+      exec:
+        - ip link set eth1 up
+        - ip addr add 10.10.10.10/24 dev eth1
+        - ip route replace default via 10.10.10.1
+
+    pc-a:
+      kind: linux
+      image: alpine:3.22
+      exec:
+        - ip link set eth1 up
+        - ip addr add 10.10.20.10/24 dev eth1
+        - ip route replace default via 10.10.20.1
+
+    pc-b:
+      kind: linux
+      image: alpine:3.22
+      exec:
+        - ip link set eth1 up
+        - ip addr add 10.10.30.10/24 dev eth1
+        - ip route replace default via 10.10.30.1
+
+  links:
+    - endpoints: ["r1:eth1", "r2:eth1"]
+    - endpoints: ["r1:eth2", "r3:eth1"]
+    - endpoints: ["r2:eth2", "r4:eth1"]
+    - endpoints: ["r4:eth2", "r3:eth2"]
+    - endpoints: ["r1:eth3", "r5:eth1"]
+    - endpoints: ["r1:eth4", "server:eth1"]
+    - endpoints: ["r2:eth3", "pc-a:eth1"]
+    - endpoints: ["r3:eth3", "pc-b:eth1"]
