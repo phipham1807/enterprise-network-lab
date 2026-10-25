@@ -12,20 +12,20 @@ all:
         ansible_password: admin
       hosts:
         clab-enterprise-r1:
-          ansible_host: 172.20.20.10
+          ansible_host: 172.20.20.9
         clab-enterprise-r2:
-          ansible_host: 172.20.20.11
+          ansible_host: 172.20.20.10
         clab-enterprise-r3:
-          ansible_host: 172.20.20.12
+          ansible_host: 172.20.20.11
         clab-enterprise-r4:
-          ansible_host: 172.20.20.5
+          ansible_host: 172.20.20.12
         clab-enterprise-r5:
-          ansible_host: 172.20.20.6
+          ansible_host: 172.20.20.5
     linux:
       hosts:
         clab-enterprise-pc-a:
-          ansible_host: 172.20.20.8
-        clab-enterprise-pc-b:
-          ansible_host: 172.20.20.9
-        clab-enterprise-server:
           ansible_host: 172.20.20.7
+        clab-enterprise-pc-b:
+          ansible_host: 172.20.20.8
+        clab-enterprise-server:
+          ansible_host: 172.20.20.6

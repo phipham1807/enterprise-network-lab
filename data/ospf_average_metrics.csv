@@ -1,2 +1,2 @@
 ﻿total_runs,average_failover_seconds,average_failback_seconds,average_rtt_ms,failover_success_rate_percent
-8,0.131,45.221,0.118,100.0
+8,0.117,45.234,0.147,100.0
