@@ -3,39 +3,39 @@ r1:
     username: admin
     password: admin
     platform: frr
-    hostname: 172.20.20.11
+    hostname: 172.20.20.10
 r2:
     username: admin
     password: admin
     platform: frr
-    hostname: 172.20.20.12
+    hostname: 172.20.20.11
 r3:
     username: admin
     password: admin
     platform: frr
-    hostname: 172.20.20.5
+    hostname: 172.20.20.12
 r4:
     username: admin
     password: admin
     platform: frr
-    hostname: 172.20.20.6
+    hostname: 172.20.20.5
 r5:
     username: admin
     password: admin
     platform: frr
-    hostname: 172.20.20.7
+    hostname: 172.20.20.6
 pc-a:
     username: 
     password: 
     platform: linux
-    hostname: 172.20.20.9
+    hostname: 172.20.20.8
 pc-b:
     username: 
     password: 
     platform: linux
-    hostname: 172.20.20.10
+    hostname: 172.20.20.9
 server:
     username: 
     password: 
     platform: linux
-    hostname: 172.20.20.8
+    hostname: 172.20.20.7
